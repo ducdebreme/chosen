@@ -61,15 +61,24 @@ class AbstractChosen
   input_blur: (evt) ->
     if not @mouse_on_container
       @active_field = false
-      setTimeout (=> this.blur_test()), 100
+      setTimeout (=> this.blur_teresults_option_buildst()), 100
 
   results_option_build: (options) ->
     content = ''
+    cnt = 0
     for data in @results_data
+
+      item = ''
       if data.group
-        content += this.result_add_group data
+        item = this.result_add_group data
       else
-        content += this.result_add_option data
+        item = this.result_add_option data
+
+      if item.length > 0
+        cnt++
+
+      if cnt<10 
+        content += item
 
       # this select logic pins on an awkward flag
       # we can make it better
